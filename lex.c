@@ -3,6 +3,15 @@
 #include <stdio.h>
 #include <string.h>
 
+
+int isKeyword(char arr[],int len)
+{
+	if(strcmp(arr,"include")==0 || strcmp(arr,"printf")==0)
+		return(1);
+	return(0);
+}
+
+
 void main()
 {
 
@@ -25,12 +34,17 @@ void main()
 		{	
 			//Ignore
 			while(str[i]!='\n')
-				l++;
+				i++;
 		}
 		
 		if(str[i]=='#' || str[i]==',' || str[i]==';')
 		{
 			printf("PUNC ");
+		}
+		
+		if(str[i]=='+' || str[i]=='-' || str[i]=='*' || str[i]=='/')
+		{
+			printf("OP ");
 		}
 		
 		if(isalpha(str[i]))
@@ -40,13 +54,13 @@ void main()
 			
 			int index=0;
 			
-			while(isalpha(str[i])
+			while(isalpha(str[i]))
 			{
 				arr[index++]=str[i];
 				i++;
 			}
 			
-			if(isKeyword(arr))
+			if(isKeyword(arr,strlen(arr)==1)
 			{
 				printf("KEYWD ");
 			}
@@ -56,8 +70,12 @@ void main()
 			}
 			
 		}
+	
+		i++;
+	}
+	
+}
 			
 				
 		 
 }
-
