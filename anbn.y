@@ -9,9 +9,9 @@ exit(0);
 %}
 %token A B NL
 %%
-st: x y nl {printf("\nMatched\n");yyparse();}
-x: A x|A
-y: B y|B
+st: x nl {printf("\nMatched\n");yyparse();}
+x: A x B | empty
+empty:
 nl: NL
 %%
 int yywrap()
